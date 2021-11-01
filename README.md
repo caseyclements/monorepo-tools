@@ -89,17 +89,22 @@ It may again take a while, depending on the size of your monorepo.
 ### Add a new package into the monorepo
 
 When you have the monorepo, you may find a reason for adding a new package after some time you already use the monorepo.
-In this case, don't use `monorepo_build.sh`, but do following steps:
+In this case, use `monorepo_add.sh`. Do the following:
 
-* Create a new repository, for example, *vendor/gamma*
+* Supposing that the repo that you'd like to add is *vendor/gamma*
 * Add remote into the monorepo `git remote add package-gamma http://github.com/vendor/gamma.git`
-* Create a new directory in the monorepo **packages/gamma**
-* Add the code and commit it
-* Use split tool with the new package
+* Use add tool with the new package
     ```
-    ~/monorepo-tools/monorepo_split.sh \
-        main-repository package-alpha:packages/alpha package-beta:packages/beta package-gamma:packages/gamma
+    ~/monorepo-tools/monorepo_add.sh \
+        main-repository package-gamma:packages/gamma
     ```
+
+This would add the repo into the subdirectory `packages/gamma`. The full structure would be:
+
+* **packages/**
+  * **alpha/** - contains repository *vendor/alpha*
+  * **beta/** - contains repository *vendor/beta*
+  * **gamma/** - contains repository *vendor/gamma*
 
 ## Reference
 
